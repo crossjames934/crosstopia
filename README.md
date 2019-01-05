@@ -1,4 +1,6 @@
-CROSS ME
+CROSSTOPIA
 =================
 
-My first attempt at making an online multiplayer game
+Competitive educational game
+
+Ideal for classrooms and parties
