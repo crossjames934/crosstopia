@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>BOMB EM</title>
+    <meta name="description" content="My first online multiplayer game">
+    <link id="favicon" rel="icon" href="/icon.jpg" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/style.css">
+    <script defer src="/socket.io.js"></script>
+    <script defer src="/p5.js"></script>
+    <script defer src="/jquery-3.3.1.min.js"></script>
+    <script defer src="/client.js"></script>
+    <script defer src="/domElements.js"></script>
+    <script defer src="/main.js"></script>
+</head>
+<body>
+    <div id="canvasContainer"></div>
+    <div class="screen" id="intro">
+        <h1>BOMB EM</h1>
+        <p>Play against your friends and classmates for total domination of your Crosstopian City</p>
+        <button class="myButton" id="setUpGameBtn">SET UP GAME</button>
+        <button class="myButton" id="joinGameBtn">JOIN GAME</button>
+    </div>
+    <div class="screen" id="setUpScreen">
+        <h1>SET UP GAME</h1>
+        <h2>WELCOME TO CROSSTOPIA, THE VIRTUAL ISLAND OF GLORIOUS WARFARE</h2>
+        <p>You will be hosting a game, the players will join the game once you have set it up </p>
+        <p>Make up your own city by filling in the form below</p>
+        <p>Make a note of these details as the players will need these to join the game</p>
+        <div class="flexCenter">
+            <form id="setUpForm">
+                <label class="myLabel" for="nameOfCity">Come up with a name for your city: </label>
+                <input type="text" class="textInput" id="nameOfCity" required>
+                <label class="myLabel" for="passwordForCity">Create a password that the players will use to access your city:</label>
+                <input type="password" class="textInput" id="passwordForCity" required>
+                <label class="myLabel" for="retypePassword">Retype this password:</label>
+                <input type="password" class="textInput" id="retypePassword" required>
+                <button class="myButton" id="backBtnSetUp">BACK</button>
+                <input type="submit" id="setUpSubmit" value="GO!" class="myButton">
+            </form>
+        </div>
+    </div>
+    <div id="waitingForPlayersScreen" class="screen">
+        <h1>Your City is Ready To Go!</h1>
+        <p>Now we just need the players to connect</p>
+    </div>
+</body>
+</html>

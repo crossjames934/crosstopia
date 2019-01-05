@@ -1,0 +1,118 @@
+/*@import url('https://fonts.googleapis.com/css?family=VT323');*/
+
+@font-face {
+    font-family: 'VT323';
+    src: url("VT323/VT323-Regular.ttf");
+}
+
+* {
+    font-family: 'VT323', monospace;
+}
+
+body {
+    margin: 0;
+    /*font-family: 'VT323', monospace;*/
+    text-align: center;
+    overflow: hidden;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#canvasContainer {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+/*#intro {*/
+    /*font-size: 25px;*/
+/*}*/
+
+.screen {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    font-size: 25px;
+    overflow-y: scroll;
+}
+
+.textInput {
+    font-size: 24px;
+    padding: 5px;
+}
+
+.myButton {
+    font-size: 50px;
+    padding: 10px 20px;
+    margin: 10px 20px;
+    border-radius: 10px;
+    border: #DDDDFF 2px solid;
+    box-shadow: black 8px 5px 15px;
+    background: linear-gradient(#EEEEEE, #AAAAAA);
+    cursor: pointer;
+}
+
+.myButton:active {
+    transform: translate(2px, 2px);
+    box-shadow: black 6px 3px 15px;
+}
+
+.myButton:focus {
+    outline: none;
+}
+
+.flexCenter {
+    display: flex;
+    justify-content: center;
+}
+
+#setUpForm {
+    display: grid;
+    grid-template-columns: 450px 450px;
+    grid-template-rows: auto;
+    grid-row-gap: 10px;
+    grid-column-gap: 5px;
+}
+
+@media only screen and (max-width: 983px) {
+    #setUpForm {
+        grid-template-columns: 1fr 45vw;
+    }
+}
+
+.myLabel {
+    justify-self: right;
+    text-align: right;
+    font-weight: bold;
+}
+
+#setUpSubmit {
+    /*grid-column: 1 / span 2;*/
+    /*width: 300px;*/
+    /*justify-self: center;*/
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes vanish {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
