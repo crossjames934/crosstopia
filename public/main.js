@@ -7,6 +7,9 @@ You can also buy shield, brutal weapons, avoid topics, and allow topic to appear
 
  */
 
+let playerId;
+let cityId; // get draw to re-write over city id
+
 function setup() {
     const cnv = createCanvas(window.innerWidth, window.innerHeight);
     cnv.parent = "canvasContainer";

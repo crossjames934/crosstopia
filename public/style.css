@@ -68,6 +68,10 @@ ul {
     outline: none;
 }
 
+.greenGradient {
+    background: linear-gradient(#AADDAA, #55DD55);
+}
+
 .flexCenter {
     display: flex;
     justify-content: center;

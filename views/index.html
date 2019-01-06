@@ -17,13 +17,18 @@
     <script defer src="/main.js"></script>
 </head>
 <body>
+    <!-- CANVAS -->
     <div id="canvasContainer"></div>
+
+    <!-- INTRODUCTORY SCREEN / HOME -->
     <div class="screen" id="intro">
         <h1>BOMB EM</h1>
         <p>Play against your friends and classmates for total domination of your Crosstopian City</p>
         <button class="myButton" id="setUpGameBtn">SET UP GAME</button>
         <button class="myButton" id="joinGameBtn">JOIN GAME</button>
     </div>
+
+    <!-- SET UP GAME -->
     <div class="screen" id="setUpScreen">
         <h1>SET UP GAME</h1>
         <h2>WELCOME TO CROSSTOPIA, THE VIRTUAL ISLAND OF GLORIOUS WARFARE</h2>
@@ -43,9 +48,48 @@
             </form>
         </div>
     </div>
+
+    <!-- WAITING FOR PLAYERS -->
     <div id="waitingForPlayersScreen" class="screen">
         <h1>Your City is Ready To Go!</h1>
         <p>Now we just need the players to connect</p>
+        <p>Get them to find this website</p>
+        <p>Tell them to choose <b>JOIN GAME</b></p>
+        <p>Get them to use the following details to join:</p>
+        <p id="nameOfCityDisplayed"></p>
+        <p id="passwordForCityDisplayed"></p>
+        <p>Once everyone has joined, press CONTINUE</p>
     </div>
+
+    <!-- FINDING EXISTING CITY TO JOIN -->
+    <div class="screen" id="findCityScreen">
+        <h1>FIND CITY</h1>
+        <h2>Your host should have the following details ready for you:</h2>
+        <p>If not get someone to go back and set up a game.</p>
+        <form id="findCityForm">
+            <label for="findCityName">CITY NAME: </label>
+            <input type="text" class="textInput" id="findCityName" required>
+            <label for="findCityPassword">PASSWORD: </label>
+            <input type="password" class="textInput" id="findCityPassword" required>
+            <input type="submit" value="GO!" class="myButton">
+        </form>
+    </div>
+
+    <!-- JOIN GAME SCREEN -->
+    <div class="screen" id="joinGameScreen">
+        <h1>JOIN GAME</h1>
+        <h2>Are you ready to win?! Fill in the details below.</h2>
+        <p>You will need to come up with a team name, and a 4-digit PIN in case you get disconnected</p>
+        <form id="joinGameForm">
+            <label for="playerNameInput">Team Name: </label>
+            <input type="text" class="textInput" id="playerNameInput" required>
+            <label for="playerPINInput">PIN: </label>
+            <input type="number" class="textInput" id="playerPINInput" min="1000" max="9999" required>
+            <input type="submit" value="GO!" class="myButton greenGradient">
+        </form>
+        <h2>If you were already playing but got disconnected, select the button below</h2>
+        <button class="myButton">I WAS DISCONNECTED!</button>
+    </div>
+
 </body>
 </html>
