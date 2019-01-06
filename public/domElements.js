@@ -15,12 +15,14 @@ const backBtnSetUp = $("#backBtnSetUp");
 const waitingForPlayersScreen = $("#waitingForPlayersScreen");
 const nameOfCityDisplayed = $("#nameOfCityDisplayed");
 const passwordForCityDisplayed = $("#passwordForCityDisplayed");
+const startGameBtn = $("#startGameBtn");
 
 // Find City Screen
 const findCityScreen = $("#findCityScreen");
 const findCityForm = $("#findCityForm");
 const findCityName = $("#findCityName");
 const findCityPassword = $("#findCityPassword");
+const backBtnJoinGame = $("#backBtnJoinGame");
 
 // Join Game Screen
 const joinGameScreen = $("#joinGameScreen");
@@ -28,11 +30,20 @@ const joinGameForm = $("#joinGameForm");
 const playerNameInput = $("#playerNameInput");
 const playerPINInput = $("#playerPINInput");
 
+// List of players, one on lobby for players and one on main hub for host
+const lobbyScreen = $('#lobbyScreen');
+const listOfPlayers1 = $("#listOfPlayers1");
+const listOfPlayers2 = $("#listOfPlayers2");
+
+const gameStartedScreen = $("#gameStartedScreen");
+
 // Initialise
 setUpScreen.hide();
 waitingForPlayersScreen.hide();
 findCityScreen.hide();
 joinGameScreen.hide();
+lobbyScreen.hide();
+gameStartedScreen.hide();
 
 // Set up screen elements
 setUpGameBtn.click(() => {
@@ -50,13 +61,14 @@ setUpForm.submit(e => {
         name: nameOfCity.val(),
         password: passwordForCity.val()
     };
-    $.post("/createCity/" + JSON.stringify(postObject), function(successful) {
-        if (successful) {
+    $.post("/createCity/" + JSON.stringify(postObject), function(id) {
+        if (id !== "exists") {
             setUpScreen.hide();
             introPanel.hide();
             waitingForPlayersScreen.show();
             nameOfCityDisplayed.html("<b>NAME: </b>" + postObject.name);
             passwordForCityDisplayed.html("<b>PASSWORD: </b>" + postObject.password);
+            cityId = id;
         } else {
             alert("A city with that name already exists, please choose another one.");
         }
@@ -67,6 +79,12 @@ setUpForm.submit(e => {
 // Back button to exit set up back to home
 backBtnSetUp.click(function() {
     setUpScreen.hide();
+    introPanel.show();
+});
+
+// Back button for the join game screen
+backBtnJoinGame.click(function() {
+    findCityScreen.hide();
     introPanel.show();
 });
 
@@ -100,7 +118,7 @@ findCityForm.submit(function(e) {
 // Joining Game Form - player chooses team name and pin
 joinGameForm.submit(function(e) {
     const postObject = {
-        teamName: playerNameInput.val(),
+        name: playerNameInput.val(),
         pin: playerPINInput.val(),
         cityId: cityId
     };
@@ -108,7 +126,16 @@ joinGameForm.submit(function(e) {
         if (response !== "access granted") {
             return alert(response);
         }
-
+        joinGameScreen.hide();
+        lobbyScreen.show();
     });
     e.preventDefault();
+});
+
+startGameBtn.click(function() {
+    $.get('/startGame/'+cityId, function(response) {
+        if (response !== "granted") {
+            return alert(response);
+        }
+    });
 });

@@ -23,9 +23,12 @@
     <!-- INTRODUCTORY SCREEN / HOME -->
     <div class="screen" id="intro">
         <h1>BOMB EM</h1>
-        <p>Play against your friends and classmates for total domination of your Crosstopian City</p>
+        <h2>Play against your friends and classmates</h2>
+        <h2>Gain total domination of your Crosstopian City</h2>
         <button class="myButton" id="setUpGameBtn">SET UP GAME</button>
         <button class="myButton" id="joinGameBtn">JOIN GAME</button>
+        <p>If you were already playing but got disconnected, select the button below</p>
+        <button class="myButton">I WAS DISCONNECTED!</button>
     </div>
 
     <!-- SET UP GAME -->
@@ -51,14 +54,26 @@
 
     <!-- WAITING FOR PLAYERS -->
     <div id="waitingForPlayersScreen" class="screen">
-        <h1>Your City is Ready To Go!</h1>
-        <p>Now we just need the players to connect</p>
-        <p>Get them to find this website</p>
-        <p>Tell them to choose <b>JOIN GAME</b></p>
-        <p>Get them to use the following details to join:</p>
-        <p id="nameOfCityDisplayed"></p>
-        <p id="passwordForCityDisplayed"></p>
-        <p>Once everyone has joined, press CONTINUE</p>
+        <!-- TWO DIVS SPLIT ONE ON LEFT ONE ON RIGHT-->
+        <div>
+            <h1>Your City is Ready To Go!</h1>
+            <p>Now we just need the players to connect</p>
+            <p>Get them to find this website</p>
+            <p>Tell them to choose <b>JOIN GAME</b></p>
+            <p>Get them to use the following details to join:</p>
+            <p id="nameOfCityDisplayed"></p>
+            <p id="passwordForCityDisplayed"></p>
+            <p>Once everyone has joined, press CONTINUE</p>
+            <button id="startGameBtn" class="myButton">CONTINUE</button>
+        </div>
+        <div>
+            <h1>Players: </h1>
+            <div class="flexCenter">
+                <ul class="listOfPlayers" id="listOfPlayers1">
+
+                </ul>
+            </div>
+        </div>
     </div>
 
     <!-- FINDING EXISTING CITY TO JOIN -->
@@ -73,6 +88,7 @@
             <input type="password" class="textInput" id="findCityPassword" required>
             <input type="submit" value="GO!" class="myButton">
         </form>
+        <button class="myButton" id="backBtnJoinGame">BACK</button>
     </div>
 
     <!-- JOIN GAME SCREEN -->
@@ -87,9 +103,26 @@
             <input type="number" class="textInput" id="playerPINInput" min="1000" max="9999" required>
             <input type="submit" value="GO!" class="myButton greenGradient">
         </form>
-        <h2>If you were already playing but got disconnected, select the button below</h2>
-        <button class="myButton">I WAS DISCONNECTED!</button>
     </div>
 
+    <!-- LOBBY - WAITING FOR PLAYERS TO JOIN -->
+    <div class="screen" id="lobbyScreen">
+        <div>
+            <h1>You Are All Set!</h1>
+            <h2>Good job, your team has joined the game.</h2>
+            <p>Now we wait for all the other teams to join the game. </p>
+            <p>Once everyone has joined the host will need to press the READY button</p>
+        </div>
+        <div>
+            <h1>Players: </h1>
+            <div class="flexCenter">
+                <ul class="listOfPlayers" id="listOfPlayers2"></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="screen" id="gameStartedScreen">
+
+    </div>
 </body>
 </html>
