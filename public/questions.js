@@ -18,7 +18,7 @@ class Question {
 }
 
 function playerAnswered(num) {
-    alert(Number(num) === question.correctNum);
+    alert(Number(num) === questionContainer.correctNum);
 }
 
 function generateAdditionQuestion(digits) {

@@ -63,7 +63,7 @@ function startGameCount() {
         } else {
             countDownElement.hide();
             quizContainer.show();
-            generateAdditionQuestion(3);
+            // generateAdditionQuestion(3);
             questionContainer.render();
         }
     };
