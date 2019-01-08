@@ -20,9 +20,7 @@ $(function () {
 
     socket.on('start game', function(hostCityId) {
         if (cityId === hostCityId) {
-            waitingForPlayersScreen.hide();
-            lobbyScreen.hide();
-            gameStartedScreen.show();
+            startGameCount();
         }
     });
 

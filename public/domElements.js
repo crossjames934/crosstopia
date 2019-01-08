@@ -35,7 +35,16 @@ const lobbyScreen = $('#lobbyScreen');
 const listOfPlayers1 = $("#listOfPlayers1");
 const listOfPlayers2 = $("#listOfPlayers2");
 
+// Game start
 const gameStartedScreen = $("#gameStartedScreen");
+const countDownElement = $("#gameStartCountDown");
+const quizContainer = $("#quizContainer");
+const question = $("#question");
+
+// Answers
+const answers = [$("#answer_0"), $("#answer_1"), $("#answer_2"), $("#answer_3")];
+// Give each answer div the function that allows player to answer the question
+answers.map((val, index) => val.click(() => playerAnswered(index)));
 
 // Initialise
 setUpScreen.hide();

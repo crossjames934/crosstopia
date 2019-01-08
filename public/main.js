@@ -47,3 +47,25 @@ function pattern() {
 function windowResized() {
     setup();
 }
+
+function startGameCount() {
+    waitingForPlayersScreen.hide();
+    lobbyScreen.hide();
+    quizContainer.hide();
+    gameStartedScreen.show();
+    countDownElement.show();
+    const countDown = function(count) {
+        countDownElement.text("GAME STARTS IN: "+count);
+        if (count > 0) {
+            setTimeout(function () {
+                countDown(count-1);
+            }, 1000);
+        } else {
+            countDownElement.hide();
+            quizContainer.show();
+            generateAdditionQuestion(3);
+            questionContainer.render();
+        }
+    };
+    countDown(1);
+}

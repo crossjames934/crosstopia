@@ -122,6 +122,10 @@ ul {
     /*justify-self: center;*/
 }
 
+#gameStartCountDown {
+    font-size: 30px;
+}
+
 @keyframes appear {
     0% {
         opacity: 0;
