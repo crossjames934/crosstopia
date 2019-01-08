@@ -1,5 +1,7 @@
+// Question is stored here, overwritten with a new instance of Question constructor when answered
 let questionContainer;
 
+// Constructor for question
 class Question {
     // Question is String, answers in array, correctNum is index of answers array which is correct
     constructor(question, answers, correctNum) {
@@ -17,10 +19,45 @@ class Question {
     }
 }
 
+// When Player answers, decide what to do based on correctness
 function playerAnswered(num) {
-    alert(Number(num) === questionContainer.correctNum);
+    // If correct
+    if (Number(num) === questionContainer.correctNum) {
+        flashResult(correctMsg);
+    } else {
+        flashResult(incorrectMsg);
+        penalty();
+    }
+    easyMaths();
 }
 
+// Penalty when player answers incorrectly
+function penalty() {
+    penaltyPanel.show();
+    const penaltyCountDown = count => {
+        penaltyMsg.text(`You will be able to answer in ${count} seconds`);
+        if (count > 0) {
+            setTimeout(() => {
+                penaltyCountDown(count-1);
+            }, 1000);
+        } else {
+            penaltyPanel.hide();
+        }
+    };
+    penaltyCountDown(5);
+}
+
+// Manages the re=triggering of css animation
+function flashResult(msg) {
+    msg.hide();
+    msg.show();
+    msg.removeClass("burstAnimation");
+    setTimeout( () => {
+        msg.addClass("burstAnimation");
+    }, 10);
+}
+
+// Generates an addition questions, takes the number of digits as an argument
 function generateAdditionQuestion(digits) {
     const digitMult = Math.pow(10, digits);
     const numX = Math.floor(Math.random() * digitMult);
@@ -38,4 +75,10 @@ function generateAdditionQuestion(digits) {
         answerArray,
         correctAnswerIndex
     );
+    questionContainer.render();
+}
+
+// Generate easy maths question
+function easyMaths() {
+    generateAdditionQuestion(2);
 }

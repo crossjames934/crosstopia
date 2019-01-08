@@ -46,6 +46,14 @@ const answers = [$("#answer_0"), $("#answer_1"), $("#answer_2"), $("#answer_3")]
 // Give each answer div the function that allows player to answer the question
 answers.map((val, index) => val.click(() => playerAnswered(index)));
 
+// Correct Message
+const correctMsg = $("#correctMsg");
+const incorrectMsg = $("#incorrectMsg");
+
+// Penalty
+const penaltyPanel = $("#penaltyPanel");
+const penaltyMsg = $("#penaltyMsg");
+
 // Initialise
 setUpScreen.hide();
 waitingForPlayersScreen.hide();
@@ -53,6 +61,9 @@ findCityScreen.hide();
 joinGameScreen.hide();
 lobbyScreen.hide();
 gameStartedScreen.hide();
+correctMsg.hide();
+incorrectMsg.hide();
+penaltyPanel.hide();
 
 // Set up screen elements
 setUpGameBtn.click(() => {
@@ -141,6 +152,7 @@ joinGameForm.submit(function(e) {
     e.preventDefault();
 });
 
+// Start game button
 startGameBtn.click(function() {
     $.get('/startGame/'+cityId, function(response) {
         if (response !== "granted") {
