@@ -126,14 +126,27 @@
     <!-- GAME -->
     <div class="screen" id="gameStartedScreen">
         <p id="gameStartCountDown">GAME STARTS IN: </p>
-        <div id="quizContainer">
-            <div id="question"></div>
-            <div class="answer" id="answer_0">TEST</div>
-            <div class="answer" id="answer_1"></div>
-            <div class="answer" id="answer_2"></div>
-            <div class="answer" id="answer_3"></div>
+        <div class="flexCenter alignCenter">
+            <div id="quizContainer" class="checkered">
+                <div id="question"></div>
+                <div class="answer" id="answer_0">TEST</div>
+                <div class="answer" id="answer_1"></div>
+                <div class="answer" id="answer_2"></div>
+                <div class="answer" id="answer_3"></div>
+            </div>
         </div>
     </div>
 
+    <!-- PENALTY - covers up the game screen -->
+    <div id="penaltyPanel">
+        <h1>PENALTY</h1>
+        <p id="penaltyMsg"></p>
+    </div>
+
+    <!-- CORRECT MESSAGE -->
+    <div id="correctMsg" class="resultOfAnswer burstAnimation">CORRECT!</div>
+
+    <!-- INCORRECT MESSAGE -->
+    <div id="incorrectMsg" class="resultOfAnswer burstAnimation">INCORRECT!</div>
 </body>
 </html>

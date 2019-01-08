@@ -14,6 +14,7 @@ function setup() {
     const cnv = createCanvas(window.innerWidth, window.innerHeight);
     cnv.parent = "canvasContainer";
     rectMode(CENTER);
+    imageMode(CENTER);
     angleMode(DEGREES);
     noFill();
 }
@@ -24,24 +25,33 @@ function draw() {
 }
 
 function pattern() {
+    push();
     translate(width/2, height/2);
-    stroke(255);
-    const mumBoxes = 8;
-    const sonBoxes = 6;
     rotate(frameCount);
-    for (let i = 0; i < mumBoxes; i++) {
-        rotate(360 / mumBoxes);
-        // noFill();
-        // rect(0, height * 0.2, width * 0.1, height * 0.1);
-        fill(255, 50);
-        for (let j = 0; j < sonBoxes; j++) {
-            translate(0, height * 0.2);
-            rotate(360 / sonBoxes);
-            rect(0, height * 0.1, width * 0.05, height * 0.05);
-            translate(0, -height * 0.2);
+    // If pattern is generated, use the canvas-saved image
+    // Attached this variable to this function to reduce global variables
+    if (!pattern.generated) {
+        stroke(255);
+        const mumBoxes = 8;
+        const sonBoxes = 6;
+        for (let i = 0; i < mumBoxes; i++) {
+            rotate(360 / mumBoxes);
+            // noFill();
+            // rect(0, height * 0.2, width * 0.1, height * 0.1);
+            fill(255, 50);
+            for (let j = 0; j < sonBoxes; j++) {
+                translate(0, height * 0.2);
+                rotate(360 / sonBoxes);
+                rect(0, height * 0.1, width * 0.05, height * 0.05);
+                translate(0, -height * 0.2);
+            }
         }
+        pattern.generated = true;
+        pattern.img = get(); // p5 function which "captures" the canvas as image
+    } else {
+        image(pattern.img, 0, 0);
     }
-    translate(-width/2, -height/2);
+    pop();
 }
 
 function windowResized() {
@@ -67,5 +77,5 @@ function startGameCount() {
             questionContainer.render();
         }
     };
-    countDown(1);
+    countDown(0);
 }
